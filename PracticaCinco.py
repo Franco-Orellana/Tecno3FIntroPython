@@ -50,12 +50,12 @@ def ingresoNumeros():
 ingresoNumeros()
 
  
-
-"""
+""" 
 Ejercicio 2:
 
 Pide números y mételos en una lista, cuando el usuario meta un 0 ya dejaremos de insertar. Por último, muestra los números ordenados de menor a mayor.
 """
+
 listNum = []
 
 def ingresoNumeros(listNumeros):
@@ -68,7 +68,7 @@ def ingresoNumeros(listNumeros):
 
         if num.isdigit() and int(num) != 0:
             
-            listNumeros.append(num)
+            listNumeros.append(int(num))
         
         elif num.isdigit() and int(num) == 0:
             
@@ -101,6 +101,7 @@ Ejercicio 3:
 
 Crea una tupla con números, pide un numero por teclado e indica cuantas veces se repite.
 """
+
 import random
 
 def genNumeros():
@@ -151,14 +152,12 @@ def ingresoNumero():
 #Inicio del programa
 ingresoNumero()
 
-
 """
 Ejercicio 4:
 
 Vamos a crear un programa en python donde vamos a declarar un diccionario para guardar los precios de las distintas frutas. El programa pedirá el nombre de la fruta y la cantidad que se ha vendido y nos mostrará el precio final de la fruta a partir de los datos guardados en el diccionario.
 """
 
- 
 def dicProductos():
 
     Productos = {
@@ -179,19 +178,6 @@ def dicProductos():
 
     return Productos 
 
-def busquedaFruta(fruta):
-
-    encontrado = False
-
-    for i in dicProductos():
-
-        if i == fruta:
-
-            encontrado = True
-            break
-    
-    return dicProductos()[fruta] if encontrado else 0
-
 
 def ingresoDatos():
 
@@ -202,13 +188,11 @@ def ingresoDatos():
 
         fruta = fruta.lower().capitalize() 
 
-        resultado = busquedaFruta(fruta)  
-
-        if resultado != 0: 
+        if dicProductos().get(fruta):
             print(f"\n- Fruta elegida: {fruta}")
             print(f"\n- Cantidad elegida: {cant}")
-            print(f"\n- Precio Unitario: ${resultado}")
-            print(f"\n- Precio final: ${int(cant) * resultado}\n")
+            print(f"\n- Precio Unitario: ${dicProductos()[fruta]}")
+            print(f"\n- Precio final: ${int(cant) * dicProductos()[fruta]}\n")
 
         else:
             print("\nALERTA. No existen datos almacenados sobre la fruta indicada.\n")
